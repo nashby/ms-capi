@@ -47,11 +47,6 @@ module Java
         Cipher.get_instance("AES/CBC/PKCS5Padding", "JCAPI")
       end
     end
-
-    def params
-      p key.getEncoded
-      @params ||= cipher.get_parameters
-    end
   end
 end
 
