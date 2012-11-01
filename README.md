@@ -5,5 +5,5 @@
 Using:
 
 ```
-aes356.rb IN_FILE OUT_FILE PASSWORD crypt|decrypt
+aes256.rb IN_FILE OUT_FILE PASSWORD crypt|decrypt
 ```
