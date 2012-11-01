@@ -55,7 +55,7 @@ module Java
   end
 end
 
-# I though I'd never use it...
+# I thought I'd never use it...
 if __FILE__ == $0
   aes = Java::Aes256.new(ARGV[0], ARGV[1], ARGV[2])
 
