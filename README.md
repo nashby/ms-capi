@@ -10,6 +10,8 @@ jruby aes256.rb IN_FILE OUT_FILE PASSWORD crypt|decrypt
 
 * hamc
 
+Using:
+
 ```
 jruby hmac.rb TEXT PASSWORD HMAC_FILE sign|verify
 ```
