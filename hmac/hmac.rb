@@ -11,9 +11,10 @@ module Java
   class HMAC
     BLOCK_SIZE = 64
 
-    def initialize(message, password)
+    def initialize(message, password, hmac_file)
       @message = message
       @password = password
+      @hmac_file = hmac_file
     end
 
     def hmac
@@ -38,17 +39,38 @@ module Java
       String.from_java_bytes(hash(key_xor_opad + String.from_java_bytes(hash(key_xor_ipad + @message))))
     end
 
+    def write_hmac
+      File.open(@hmac_file, 'w+') { |file| file.write(hmac) }
+    end
+
+    def load_hmac
+      File.read(@hmac_file)
+    end
+
     def hash(data)
       @hash ||= begin
         md = MessageDigest.get_instance("MD5", "JCAPI")
         md.digest(data.to_java_bytes)
       end
     end
+
+    def genuine?
+      load_hmac.unpack("C*") == hmac.unpack("C*")
+    end
   end
 end
 
 # I thought I'd never use it...
 if __FILE__ == $0
-  hmac = Java::HMAC.new(ARGV[0], ARGV[1])
-  p hmac.hmac
+  hmac = Java::HMAC.new(ARGV[0], ARGV[1], ARGV[2])
+
+  if ARGV[3] == 'sign'
+    hmac.write_hmac
+  elsif ARGV[3] == 'verify'
+    if hmac.genuine?
+      puts "Yay, it was successfully verified"
+    else
+      puts "No. Just no."
+    end
+  end
 end
