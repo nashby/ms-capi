@@ -44,7 +44,7 @@ module Java
 
     def cipher
       @cipher ||= begin
-        Cipher.get_instance("AES/CBC/PKCS5Padding", "JCAPI")
+        Cipher.get_instance("AES", "JCAPI")
       end
     end
   end
