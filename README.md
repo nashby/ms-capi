@@ -39,3 +39,11 @@ ruby lsb_writer.rb PHRASE IN_WAV_FILE OUT_WAV_FILE
 ```
 ruby lsb_reader.rb PHRASE_LENGTH WAV_FILE
 ```
+
+* Patchwork
+
+Using
+
+```
+ruby patchwork.rb IMAGE_FILE KEY set
+```
