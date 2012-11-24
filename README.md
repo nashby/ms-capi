@@ -47,3 +47,12 @@ Using
 ```
 ruby patchwork.rb IMAGE_FILE KEY set
 ```
+
+* Text container
+
+Using
+
+```ruby
+ruby encoder.rb TEXT_TO_ENCODE CHAR_POSITION FILE encode
+ruby decode.rb CHAR_POSITION FILE decode
+```
