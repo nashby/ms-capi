@@ -1,3 +1,4 @@
 JCAPI.jar
 *.txt
+*.db
 steganography/data/output.wav
